@@ -1,15 +1,22 @@
-import React, { Component } from "react";
-import PeopleCards from "../Components/PeopleCards";
+import React, { useState } from 'react';
+import Searcher from '../Components/Searcher';
+import PeopleCards from '../Components/PeopleCards';
 
-class Home extends Component {
-    render() {
-    return (
+export default function Home(Brastlewark) {
+  const [word, setWord] = useState('');
+
+
+  const handleSeachController = (aWord) => {
+    setWord(aWord);
+  };
+
+  return (
+    <div>
+      <h1>List of people</h1>
       <div>
-        <h1>List of people</h1>
-        <PeopleCards />
+        <Searcher handleSeachController={handleSeachController} />
+        <PeopleCards Brastlewark={Brastlewark} word={word} />
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default Home;

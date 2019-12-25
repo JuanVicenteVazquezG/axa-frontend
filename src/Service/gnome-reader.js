@@ -1,7 +1,6 @@
 class GnomeReader {
   constructor() {
-    this.where =
-      "https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json";
+    this.where = 'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json';
   }
 
   async getAllInfo() {
@@ -9,7 +8,7 @@ class GnomeReader {
       const response = await fetch(this.where);
       const data = await response.json();
       const { Brastlewark } = data;
-      return  Brastlewark;
+      return Brastlewark;
     } catch (error) {
       return error;
     }
