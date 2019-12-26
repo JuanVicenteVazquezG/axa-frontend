@@ -18,19 +18,20 @@ export default function PeopleCards(props) {
     );
   };
 
-  // useEffect(() => {
-  //   if (word === '') {
-  //     setBrastlewark(Brastlewark);
-  //   }
-  // });
+  useEffect(() => {
+    if (word === '') {
+      setBrastlewark(Brastlewark);
+      console.log('sb', showBrastlewark);
+    }
+  });
 
-  // useEffect(() => {
-  //   searchingByName();
-  // }, [word]);
+  useEffect(() => {
+    searchingByName();
+  }, [word]);
 
   return (
     <div>
-      {/* {showBrastlewark
+      {showBrastlewark
         && showBrastlewark.map((person) => (
           <div key={`${person.id}`}>
             <Link to={`/person/${person.id}`}>
@@ -50,7 +51,7 @@ export default function PeopleCards(props) {
               />
             </Link>
           </div>
-        ))} */}
+        ))}
     </div>
   );
 }

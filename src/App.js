@@ -6,23 +6,28 @@ import Home from './Views/Home';
 import Card from './Views/Card';
 
 function App() {
-  const [Brastlewark, gnomeReadInfo] = useState(
-    gnomeReader.getAllInfo().then((info) => info),
-  );
+  const [Brastlewark, setBrastlewark] = useState('');
 
   useEffect(() => {
-    if (!Brastlewark.length > 0) {
-      gnomeReader.getAllInfo().then((info) => {
-        gnomeReadInfo(info);
-      });
+    if (Brastlewark.length <= 0) {
+      gnomeReader
+        .getAllInfo()
+        .then((info) => {
+          setBrastlewark(info);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   });
 
   return (
-    <Router>
+    <div>
       {Brastlewark && (
+      <Router>
         <div className="App">
           <div className="container">
+           
             <Route exact path="/">
               <Home Brastlewark={Brastlewark} />
             </Route>
@@ -31,9 +36,11 @@ function App() {
             </Route>
           </div>
         </div>
+      </Router>
       )}
       {!Brastlewark && <div>Loading...</div>}
-    </Router>
+     }
+    </div>
   );
 }
 
