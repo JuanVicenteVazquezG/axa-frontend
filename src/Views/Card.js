@@ -9,7 +9,8 @@ export default function Card({ Brastlewark }) {
     setPerson(Brastlewark[id]);
   }, []);
 
-  const handleLookingForAFriend = (friend) => Brastlewark.findIndex((person) => person.name === friend);
+  const handleLookingForAFriend = friend =>
+    Brastlewark.findIndex(person => person.name === friend);
 
   /* This is a view */
   return (
