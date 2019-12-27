@@ -52,7 +52,7 @@ export default function Card({ Brastlewark }) {
             <div>
               {Person.friends.map((friend, index) => (
                 <div key={`friends-${index + 100}`}>
-                  <Link to={(location) => ({ ...location, pathname: `/person/${handleLookingForAFriend(friend)}` })}>
+                  <Link to={`/person/${handleLookingForAFriend(friend)}`} params={Brastlewark}>
                     <div>
                       {friend}
                       <img
