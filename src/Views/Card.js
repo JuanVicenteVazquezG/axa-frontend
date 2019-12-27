@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export default function Card({ Brastlewark }) {
   const [Person, setPerson] = useState([]);
   const { id } = useParams();
-  const address = '';
+
   useEffect(() => {
     setPerson(Brastlewark[id]);
   }, []);
@@ -14,6 +14,7 @@ export default function Card({ Brastlewark }) {
   /* This is a view */
   return (
     <div>
+      <Link to="/">Listado general</Link>
       {Person && (
         <div>
           <h1>Personal Detail</h1>
@@ -48,15 +49,25 @@ export default function Card({ Brastlewark }) {
           <h3>Friends: </h3>
           {!Person.friends && <div>No friends known</div>}
           {Person.friends && (
-          <div>
-            {Person.friends.map((friend, index) => (
-              <div key={`friends-${index + 100}`}>
-                <Redirect to={`/person/${handleLookingForAFriend(friend)}`}>
-                  {friend}
-                </Redirect>
-              </div>
-            ))}
-          </div>
+            <div>
+              {Person.friends.map((friend, index) => (
+                <div key={`friends-${index + 100}`}>
+                  <Link to={(location) => ({ ...location, pathname: `/person/${handleLookingForAFriend(friend)}` })}>
+                    <div>
+                      {friend}
+                      <img
+                        style={{ width: '50px' }}
+                        src={
+                          Brastlewark[handleLookingForAFriend(friend)].thumbnail
+                        }
+                        alt="a friend"
+                      />
+
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       )}
