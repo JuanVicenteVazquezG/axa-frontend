@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 export default function Card(props) {
   const { Brastlewark } = props;
@@ -10,15 +10,11 @@ export default function Card(props) {
     setPerson(Brastlewark[id]);
   }, [id]);
 
-  
-
-  const handleLookingForAFriend = friend =>
-    Brastlewark.findIndex(person => person.name === friend);
+  const handleLookingForAFriend = friend => Brastlewark.findIndex(person => person.name === friend);
 
   /* This is a view */
   return (
     <div>
-      {console.log(window)}
       <Link to="/">Listado general</Link>
       {Person && (
         <div>
@@ -52,28 +48,24 @@ export default function Card(props) {
           )}
           {!Person.professions && <div>No professions known</div>}
           <h3>Friends: </h3>
-          {!Person.friends && <div>No friends known</div>}
+
           {Person.friends && (
             <div>
               {Person.friends.map((friend, index) => (
                 <div key={`friends-${index + 100}`}>
-                  <Link
-                    to={`/person/${handleLookingForAFriend(friend)}`}
-                    params={Brastlewark}
-                  >
+                  <Link to={`/person/${handleLookingForAFriend(friend)}`} params={Brastlewark}>
                     <div>
                       {friend}
                       <img
-                        style={{ width: "50px" }}
-                        src={
-                          Brastlewark[handleLookingForAFriend(friend)].thumbnail
-                        }
+                        style={{ width: '50px' }}
+                        src={Brastlewark[handleLookingForAFriend(friend)].thumbnail}
                         alt="a friend"
                       />
                     </div>
                   </Link>
                 </div>
               ))}
+              {!Person.friends && <div>No friend known</div>}
             </div>
           )}
         </div>
