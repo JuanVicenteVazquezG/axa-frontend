@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 
-export default function Card({ Brastlewark }) {
+export default function Card(props) {
+  const { Brastlewark } = props;
   const [Person, setPerson] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
     setPerson(Brastlewark[id]);
-  }, []);
+  }, [id]);
 
-  const handleLookingForAFriend = (friend) => Brastlewark.findIndex((person) => person.name === friend);
+  
+
+  const handleLookingForAFriend = friend =>
+    Brastlewark.findIndex(person => person.name === friend);
 
   /* This is a view */
   return (
     <div>
+      {console.log(window)}
       <Link to="/">Listado general</Link>
       {Person && (
         <div>
@@ -52,17 +57,19 @@ export default function Card({ Brastlewark }) {
             <div>
               {Person.friends.map((friend, index) => (
                 <div key={`friends-${index + 100}`}>
-                  <Link to={`/person/${handleLookingForAFriend(friend)}`} params={Brastlewark}>
+                  <Link
+                    to={`/person/${handleLookingForAFriend(friend)}`}
+                    params={Brastlewark}
+                  >
                     <div>
                       {friend}
                       <img
-                        style={{ width: '50px' }}
+                        style={{ width: "50px" }}
                         src={
                           Brastlewark[handleLookingForAFriend(friend)].thumbnail
                         }
                         alt="a friend"
                       />
-
                     </div>
                   </Link>
                 </div>
