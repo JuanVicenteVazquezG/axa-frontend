@@ -30,12 +30,12 @@ export default function PeopleCards(props) {
   }, [word]);
 
   return (
-    <div>
+    <div className="w-full flex-row flex-wrap">
       {showBrastlewark
         && showBrastlewark.map((person) => (
-          <div key={`${person.id}`}>
+          <div key={`${person.id}`} className="sm:w-1/2 md:w-2/5 lg:w-1/3 xl:w-1/4 m" style={{ display: 'inline-block' }}>
             <Link to={`/person/${person.id}`}>
-              <h3>{person.name}</h3>
+              <h3 className="text-center">{person.name}</h3>
               <h3>
                 Age
                 {person.age}

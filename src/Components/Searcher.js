@@ -10,9 +10,10 @@ export default function Searcher(props) {
   };
 
   return (
-    <div>
-      <div>Search</div>
+    <div className="w-full flex-row">
+      <span className="mx-2 text-gray-300">Search</span>
       <input
+        className="w-9/12 rounded-full "
         type="text"
         defaultValue=""
         onChange={(e) => {
