@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 // import propTypes from 'prop-types';
+
+const CardShower = styled.div`
+  width:100%;
+  display:flex;
+  flex-direction: row;
+  justify-content:flex-start;
+`;
+const CharacterCard = styled.div`
+  width:300px;
+  border: 1px solid black;
+  display:inline-block;
+  flex-wrap: wrap;
+`;
+
+const RoundImage = styled.div`
+  width: 100px;
+  border-radius:75px;
+  background-image: url( ${(props) => (props.nameImage)});`;
 
 export default function PeopleCards(props) {
   const {
@@ -27,10 +46,10 @@ export default function PeopleCards(props) {
   }, [word]);
 
   return (
-    <div>
+    <CardShower>
       {showBrastlewark
         && showBrastlewark.map((person) => (
-          <div
+          <CharacterCard
             key={`${person.id}`}
           >
             <Link to={`/person/${person.id}`}>
@@ -40,19 +59,14 @@ export default function PeopleCards(props) {
                 {person.age}
               </h3>
               <h3>
-                Height
-                {`${person.height}"`}
+                Height:
+                {' '}
+                {`${person.height} "`}
               </h3>
-              <div className="w-1/2 h-24">
-                <img
-                  className="h-full"
-                  src={person.thumbnail}
-                  alt="personal icon"
-                />
-              </div>
+              <RoundImage nameImage={person.thumbnail} />
             </Link>
-          </div>
+          </CharacterCard>
         ))}
-    </div>
+    </CardShower>
   );
 }

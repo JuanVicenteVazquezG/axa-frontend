@@ -1,13 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Reset } from 'styled-reset';
-import styled from 'styled-components';
+import { Normalize } from 'styled-normalize';
+import styled, { keyframes } from 'styled-components';
 import gnomeReader from './Service/gnome-reader';
 import Home from './Views/Home';
 import Card from './Views/Card';
 
-const H1Title = styled.h1`font-size: 2rem; text-align:center; color: red; margin-top:10px;`;
-const AppDiv = styled.div`width: 100%; background-image: url('Images/parchment.svg');`;
+const AppDiv = styled.div`
+ width: 100%;`;
+
+const moveInLeft = keyframes`
+0% {
+  opacity: 0;
+  transform: translateX(-10rem); }
+80% {
+  transform: translateX(1rem); }
+100% {
+  opacity: 1;
+  transform: translate(0); }
+`;
+
+const MoveLeft = styled.div` 
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: .3rem;
+  text-transform: uppercase
+  animation-name: ${moveInLeft};
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+`;
+
+const H1Title = styled.h1`
+  font-size: 2rem; 
+  text-align:center; 
+  color: #806836; 
+  padding-top:10px;
+`;
 
 function App() {
   const [Brastlewark, setBrastlewark] = useState('');
@@ -28,11 +58,12 @@ function App() {
   return (
     <div>
       <Reset />
+      <Normalize />
       {Brastlewark && (
         <Router>
           <AppDiv>
             <div className="container">
-              <H1Title className="mx-auto text-4xl text-center text-gray-300 font-bold uppercase">Brastlewark</H1Title>
+              <MoveLeft><H1Title>Brastlewark</H1Title></MoveLeft>
               <Route exact path="/person/:id" render={() => <Card Brastlewark={Brastlewark} />} />
               <Route exact path="/" render={() => <Home Brastlewark={Brastlewark} />} />
               <Route exact path="/person" component={Home} />

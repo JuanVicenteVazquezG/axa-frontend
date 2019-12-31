@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 export default function Card(props) {
   const { Brastlewark } = props;
@@ -12,6 +13,7 @@ export default function Card(props) {
 
   const handleLookingForAFriend = (friend) => Brastlewark.findIndex((person) => (
     person.name === friend));
+
 
 
   /* This is a view */
