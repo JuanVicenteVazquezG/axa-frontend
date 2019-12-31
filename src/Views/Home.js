@@ -12,8 +12,8 @@ export default function Home(Brastlewark) {
 
   return (
     <div>
-      <h2 className="text-2xl text-center text-gray-300  uppercase">CHARACTER CENSUS</h2>
-      <div className="w-full">
+      <h2>CHARACTER CENSUS</h2>
+      <div>
         <Searcher handleSeachController={handleSeachController} />
         <PeopleCards Brastlewark={Brastlewark} word={word} />
       </div>

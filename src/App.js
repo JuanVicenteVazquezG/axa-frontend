@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './css/app.css';
+import { Reset } from 'styled-reset';
+import styled from 'styled-components';
 import gnomeReader from './Service/gnome-reader';
 import Home from './Views/Home';
 import Card from './Views/Card';
+
+const H1Title = styled.h1`font-size: 2rem; text-align:center; color: red; margin-top:10px;`;
+const AppDiv = styled.div`width: 100%; background-image: url('Images/parchment.svg');`;
 
 function App() {
   const [Brastlewark, setBrastlewark] = useState('');
@@ -12,10 +16,10 @@ function App() {
     if (Brastlewark.length <= 0) {
       gnomeReader
         .getAllInfo()
-        .then(info => {
+        .then((info) => {
           setBrastlewark(info);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     }
@@ -23,16 +27,17 @@ function App() {
 
   return (
     <div>
+      <Reset />
       {Brastlewark && (
         <Router>
-          <div className="App w-full bg-green-700">
-            <div className="container w-full">
-              <h1 className="text-4xl text-center text-gray-300 font-bold uppercase">Brastlewark</h1>
+          <AppDiv>
+            <div className="container">
+              <H1Title className="mx-auto text-4xl text-center text-gray-300 font-bold uppercase">Brastlewark</H1Title>
               <Route exact path="/person/:id" render={() => <Card Brastlewark={Brastlewark} />} />
               <Route exact path="/" render={() => <Home Brastlewark={Brastlewark} />} />
               <Route exact path="/person" component={Home} />
             </div>
-          </div>
+          </AppDiv>
         </Router>
       )}
       {!Brastlewark && <div>Loading...</div>}

@@ -11,17 +11,14 @@ export default function PeopleCards(props) {
   const [showBrastlewark, setBrastlewark] = useState([]);
 
   const searchingByName = () => {
-    setBrastlewark(
-      Brastlewark.filter(
-        (person) => person.name.toLowerCase().indexOf(word.toLowerCase()) !== -1,
-      ),
-    );
+    setBrastlewark(Brastlewark.filter((person) => (person.name.toLowerCase().indexOf(
+      word.toLowerCase(),
+    ) !== -1)));
   };
 
   useEffect(() => {
     if (word === '') {
       setBrastlewark(Brastlewark);
-      console.log('sb', showBrastlewark);
     }
   });
 
@@ -30,12 +27,14 @@ export default function PeopleCards(props) {
   }, [word]);
 
   return (
-    <div className="w-full flex-row flex-wrap">
+    <div>
       {showBrastlewark
         && showBrastlewark.map((person) => (
-          <div key={`${person.id}`} className="sm:w-1/2 md:w-2/5 lg:w-1/3 xl:w-1/4 m" style={{ display: 'inline-block' }}>
+          <div
+            key={`${person.id}`}
+          >
             <Link to={`/person/${person.id}`}>
-              <h3 className="text-center">{person.name}</h3>
+              <h3>{person.name}</h3>
               <h3>
                 Age
                 {person.age}
@@ -44,11 +43,13 @@ export default function PeopleCards(props) {
                 Height
                 {`${person.height}"`}
               </h3>
-              <img
-                style={{ width: '25%', border: '1px solid black' }}
-                src={person.thumbnail}
-                alt="personal icon"
-              />
+              <div className="w-1/2 h-24">
+                <img
+                  className="h-full"
+                  src={person.thumbnail}
+                  alt="personal icon"
+                />
+              </div>
             </Link>
           </div>
         ))}
