@@ -17,8 +17,7 @@ const moveInRight = keyframes`
 
 const MoveRight = styled.div` 
   display: block;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 2rem;
   letter-spacing: 0.3rem;
   animation: ${moveInRight} 1s ease-out;
 `;
@@ -29,6 +28,9 @@ margin:20px auto;
   width:90%;
 `;
 
+const Census = styled.h2`
+  text-align: center;
+`;
 
 export default function Home(Brastlewark) {
   const [word, setWord] = useState('');
@@ -40,7 +42,7 @@ export default function Home(Brastlewark) {
 
   return (
     <div>
-      <MoveRight><h2 style={{ textAlign: 'center' }}>CHARACTER CENSUS</h2></MoveRight>
+      <MoveRight><Census>CHARACTER CENSUS</Census></MoveRight>
       <Separation />
       <div>
         <Searcher handleSeachController={handleSeachController} />

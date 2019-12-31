@@ -10,6 +10,11 @@ import Card from './Views/Card';
 const AppDiv = styled.div`
  width: 100%;`;
 
+const Container = styled.div`
+   width:95%;
+   margin:0 auto;
+ `;
+
 const moveInLeft = keyframes`
 0% {
   opacity: 0;
@@ -25,15 +30,14 @@ const MoveLeft = styled.div`
   display: block;
   font-size: 6rem;
   font-weight: 400;
-  letter-spacing: .3rem;
-  text-transform: uppercase
+  text-transform: uppercase;
   animation-name: ${moveInLeft};
   animation-duration: 1s;
   animation-timing-function: ease-out;
 `;
 
 const H1Title = styled.h1`
-  font-size: 2rem; 
+  font-size: 3rem; 
   text-align:center; 
   color: #806836; 
   padding-top:10px;
@@ -62,12 +66,12 @@ function App() {
       {Brastlewark && (
         <Router>
           <AppDiv>
-            <div className="container">
+            <Container>
               <MoveLeft><H1Title>Brastlewark</H1Title></MoveLeft>
               <Route exact path="/person/:id" render={() => <Card Brastlewark={Brastlewark} />} />
               <Route exact path="/" render={() => <Home Brastlewark={Brastlewark} />} />
               <Route exact path="/person" component={Home} />
-            </div>
+            </Container>
           </AppDiv>
         </Router>
       )}

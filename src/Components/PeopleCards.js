@@ -7,19 +7,52 @@ const CardShower = styled.div`
   width:100%;
   display:flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content:flex-start;
 `;
+
 const CharacterCard = styled.div`
   width:300px;
+  height:300px;
   border: 1px solid black;
+  border-radius: 25px;
   display:inline-block;
   flex-wrap: wrap;
+  margin:10px auto;
+  -webkit-box-shadow: 10px 14px 21px 0px rgba(0,0,0,0.33);
+  -moz-box-shadow: 10px 14px 21px 0px rgba(0,0,0,0.33);
+  box-shadow: 10px 14px 21px 0px rgba(0,0,0,0.33);
+  background-color: #FFE8B8;
 `;
 
 const RoundImage = styled.div`
-  width: 100px;
-  border-radius:75px;
-  background-image: url( ${(props) => (props.nameImage)});`;
+  width: 125px;
+  height: 125px;
+  border-radius:125px;
+  background-image: url(${(props) => props.nameImage});
+  background-size: 100px 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin:20px auto;
+`;
+
+const CharacterName = styled.h3`
+  color: #CFB53B;
+  text-align: center;
+  font-size: 1.7rem;
+  margin-top:30px;
+`;
+
+const LinkItem = styled(Link)`
+  color: black;
+  text-decoration: none;
+`;
+
+const TextInfo = styled.p`
+  text-align: center;
+  font-size: 16px;
+  margin: 5px 0;
+`;
 
 export default function PeopleCards(props) {
   const {
@@ -52,19 +85,16 @@ export default function PeopleCards(props) {
           <CharacterCard
             key={`${person.id}`}
           >
-            <Link to={`/person/${person.id}`}>
-              <h3>{person.name}</h3>
-              <h3>
-                Age
-                {person.age}
-              </h3>
-              <h3>
-                Height:
-                {' '}
-                {`${person.height} "`}
-              </h3>
+            <LinkItem to={`/person/${person.id}`}>
+              <CharacterName>{person.name}</CharacterName>
               <RoundImage nameImage={person.thumbnail} />
-            </Link>
+              <TextInfo>
+                {`Age: ${person.age} years`}
+              </TextInfo>
+              <TextInfo>
+                {`Height: ${person.height}"`}
+              </TextInfo>
+            </LinkItem>
           </CharacterCard>
         ))}
     </CardShower>
