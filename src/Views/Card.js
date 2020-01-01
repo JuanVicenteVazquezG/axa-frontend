@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function Card(props) {
-  const { Brastlewark } = props;
+export default function Card({ Brastlewark }) {
   const [Person, setPerson] = useState([]);
   const { id } = useParams();
 
@@ -14,15 +13,13 @@ export default function Card(props) {
   const handleLookingForAFriend = (friend) => Brastlewark.findIndex((person) => (
     person.name === friend));
 
-
-
   /* This is a view */
   return (
     <div>
-      <Link to="/">Listado general</Link>
+      <Link to="/">{'<<Back'}</Link>
       {Person && (
         <div>
-          <h1>Personal Detail</h1>
+          <h1>CHARACTER DITAIL</h1>
           <p>{Person.name}</p>
           <img src={Person.thumbnail} alt="Personal icon" />
           <p>

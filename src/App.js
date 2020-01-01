@@ -70,7 +70,7 @@ function App() {
               <MoveLeft><H1Title>Brastlewark</H1Title></MoveLeft>
               <Route exact path="/person/:id" render={() => <Card Brastlewark={Brastlewark} />} />
               <Route exact path="/" render={() => <Home Brastlewark={Brastlewark} />} />
-              <Route exact path="/person" component={Home} />
+              <Route exact path="/person" render={() => <Home Brastlewark={Brastlewark} />} />
             </Container>
           </AppDiv>
         </Router>

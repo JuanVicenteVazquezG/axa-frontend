@@ -5,7 +5,7 @@ import PeopleCards from '../Components/PeopleCards';
 
 
 const moveInRight = keyframes`
-0% {
+  0% {
     opacity: 0;
     transform: translateX(10rem); }
   80% {
@@ -34,8 +34,6 @@ const Census = styled.h2`
 
 export default function Home(Brastlewark) {
   const [word, setWord] = useState('');
-
-
   const handleSeachController = (aWord) => {
     setWord(aWord);
   };

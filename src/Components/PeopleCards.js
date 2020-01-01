@@ -92,7 +92,7 @@ export default function PeopleCards(props) {
                 {`Age: ${person.age} years`}
               </TextInfo>
               <TextInfo>
-                {`Height: ${person.height}"`}
+                {`Height: ${parseFloat(Math.round(person.height * 100) / 100).toFixed(2)}"`}
               </TextInfo>
             </LinkItem>
           </CharacterCard>
