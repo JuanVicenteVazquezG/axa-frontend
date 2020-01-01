@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import propTypes from 'prop-types';
 import Searcher from '../Components/Searcher';
 import PeopleCards from '../Components/PeopleCards';
 
@@ -49,3 +50,7 @@ export default function Home(Brastlewark) {
     </div>
   );
 }
+
+Home.propTypes = {
+  Brastlewark: propTypes.arrayOf(propTypes.object).isRequired,
+};

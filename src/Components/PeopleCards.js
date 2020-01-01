@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-// import propTypes from 'prop-types';
+import Img from 'react-image';
+import propTypes from 'prop-types';
 
 const CardShower = styled.div`
   width:100%;
@@ -14,7 +15,7 @@ const CardShower = styled.div`
 const CharacterCard = styled.div`
   width:300px;
   height:300px;
-  border: 1px solid black;
+  border: 1px solid grey;
   border-radius: 25px;
   display:inline-block;
   flex-wrap: wrap;
@@ -25,14 +26,18 @@ const CharacterCard = styled.div`
   background-color: #FFE8B8;
 `;
 
-const RoundImage = styled.div`
-  width: 125px;
-  height: 125px;
+const ImagePosition = styled.div`
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 30px auto;
+`;
+
+const RoundImage = styled(Img)`
+  width: 100%;
+  height:100%;
   border-radius:125px;
-  background-image: url(${(props) => props.nameImage});
-  background-size: 100px 100px;
-  background-position: center;
-  background-repeat: no-repeat;
+  border: 2px solid grey;
+  overflow: hidden;
   margin:20px auto;
 `;
 
@@ -58,7 +63,7 @@ export default function PeopleCards(props) {
   const {
     Brastlewark: { Brastlewark },
   } = props;
-  // // const { Brastlewark } = props;
+
   const { word } = props;
   const [showBrastlewark, setBrastlewark] = useState([]);
 
@@ -87,7 +92,9 @@ export default function PeopleCards(props) {
           >
             <LinkItem to={`/person/${person.id}`}>
               <CharacterName>{person.name}</CharacterName>
-              <RoundImage nameImage={person.thumbnail} />
+              <ImagePosition>
+                <RoundImage src={person.thumbnail} />
+              </ImagePosition>
               <TextInfo>
                 {`Age: ${person.age} years`}
               </TextInfo>
@@ -100,3 +107,8 @@ export default function PeopleCards(props) {
     </CardShower>
   );
 }
+
+PeopleCards.propTypes = {
+  Brastlewark: propTypes.arrayOf(propTypes.object).isRequired,
+  word: propTypes.string.isRequired,
+};
