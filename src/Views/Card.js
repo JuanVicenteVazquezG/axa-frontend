@@ -34,17 +34,18 @@ const CardDetail = styled.div`
   width: 100%;
   border: 1px solid grey;
   border-radius: 25px;
+  margin-bottom: 20px;
 `;
 
 const CardDetailOrganization = styled.div`
   display:flex;
   flex-direction:row;
   flex-wrap: wrap;
-  justify-content:center;
+  justify-content: space-around;
 `;
 
 const Separation = styled.div`
-margin:20px auto;
+ margin:20px auto;
   border-top: 1px solid  #806836;
   width:90%;
 `;
@@ -59,22 +60,72 @@ const CharacterName = styled.h3`
 const ImagePositionBig = styled.div`
   display: inline-block;
   width:300px;
-  height: 300px;
-  margin: 0 auto 30px auto;
 `;
 
 const BigImage = styled(Img)`
   width: 100%;
-  height: 100%;
   border-radius:25px;
   border: 2px solid grey;
-  overflow: hidden;
   margin:20px auto;
 `;
 
 const DetailsInfoBig = styled.div`
   width: 300px;
+  padding-top: 30px;
 `;
+
+const CharacterInfo = styled.p`
+  margin:10px 0;
+`;
+
+const TextInfo = styled.p`
+  text-align: center;
+  font-size: 16px;
+  margin: 5px 0;
+  font-weight: bolder;
+`;
+
+const InfoFriends = styled.div`
+  width: 300px;
+`;
+
+const ImagePosition = styled.div`
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 30px auto;
+`;
+
+const RoundImage = styled(Img)`
+  width: 100%;
+  height:100%;
+  border-radius:125px;
+  border: 2px solid grey;
+  overflow: hidden;
+  margin:20px auto;
+`;
+
+const LinkItem = styled(Link)`
+  color: black;
+  text-decoration: none;
+`;
+
+const Name = styled.p`
+  margin:0 auto;
+`;
+
+const LittleCard = styled.div`
+  width: 70%;
+  display: flex;
+  flex-direction: row; 
+  justify-content: center; 
+  border: 1px solid grey;
+  margin: 0 auto 10px auto;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.6);
+  -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.6);
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.6);
+`;
+
 
 export default function Card({ Brastlewark }) {
   const [Person, setPerson] = useState([]);
@@ -92,7 +143,7 @@ export default function Card({ Brastlewark }) {
     <ContainerCardDetail>
       <MoveRight><CharacterDetail>DETAIL INFO</CharacterDetail></MoveRight>
       <Separation />
-      <Link to="/" style={{ marginBottom: '330px' }}>{'<<Back'}</Link>
+      <Link to="/">{'<<Back'}</Link>
       {Person && (
         <CardDetail>
           <CharacterName>{Person.name}</CharacterName>
@@ -101,55 +152,52 @@ export default function Card({ Brastlewark }) {
               <BigImage src={Person.thumbnail} alt="Personal icon" />
             </ImagePositionBig>
             <DetailsInfoBig>
-              <p>
-                Age:
-                {Person.age}
-              </p>
-              <p>
-                Weight:
-                {Person.weight}
-                lb
-              </p>
-              <p>
-                Height:
-                {Person.height}
-              </p>
-              <p>
-                Hair Color:
-                {Person.hair_color}
-              </p>
-
-              <h3>Professions: </h3>
-
+              <TextInfo>Info</TextInfo>
+              <CharacterInfo>
+                {`Age: ${Person.age}`}
+              </CharacterInfo>
+              <CharacterInfo>
+                {`Weight: ${Person.weight} lb`}
+              </CharacterInfo>
+              <CharacterInfo>
+                {`Height: ${Person.height}`}
+              </CharacterInfo>
+              <CharacterInfo>
+                {`Hair Color: ${Person.hair_color}`}
+              </CharacterInfo>
+              <TextInfo>Professions: </TextInfo>
               {Person.professions && (
                 <div>
                   {Person.professions.map((profession, index) => (
-                    <div key={`professions-${index + 100}`}>{profession}</div>
+                    <div key={`professions-${index + 100}`}><CharacterInfo>{profession}</CharacterInfo></div>
                   ))}
                 </div>
               )}
               {!Person.professions && <div>No professions known</div>}
-              <h3>Friends: </h3>
+            </DetailsInfoBig>
+            <InfoFriends>
+              <TextInfo>Friends: </TextInfo>
               {Person.friends && (
                 <div>
-                  {Person.friends.map((friend, index) => (
-                    <div key={`friends-${index + 100}`}>
-                      <Link to={`/person/${handleLookingForAFriend(friend)}`} params={Brastlewark}>
+                  {Person.friends.length > 0 && Person.friends.map((friend, index) => (
+                    <LittleCard key={`friends-${index + 100}`}>
+                      <LinkItem to={`/person/${handleLookingForAFriend(friend)}`} params={Brastlewark}>
                         <div>
-                          {friend}
-                          <img
-                            style={{ width: '50px' }}
-                            src={Brastlewark[handleLookingForAFriend(friend)].thumbnail}
-                            alt="a friend"
-                          />
+                          <Name>{friend}</Name>
+                          <ImagePosition>
+                            <RoundImage
+                              src={Brastlewark[handleLookingForAFriend(friend)].thumbnail}
+                              alt="a friend"
+                            />
+                          </ImagePosition>
                         </div>
-                      </Link>
-                    </div>
+                      </LinkItem>
+                    </LittleCard>
                   ))}
                   {!Person.friends && <div>No friend known</div>}
                 </div>
               )}
-            </DetailsInfoBig>
+            </InfoFriends>
           </CardDetailOrganization>
         </CardDetail>
       )}
