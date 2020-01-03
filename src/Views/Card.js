@@ -34,7 +34,7 @@ const CardDetail = styled.div`
   width: 100%;
   border: 1px solid grey;
   border-radius: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 `;
 
 const CardDetailOrganization = styled.div`

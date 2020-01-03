@@ -75,7 +75,7 @@ function App() {
           </AppDiv>
         </Router>
       )}
-      {!Brastlewark && <div>Loading...</div>}
+      {!Brastlewark && (<div>Loading...</div>)}
     </div>
   );
 }

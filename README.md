@@ -1,8 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Assessment AXA
 
-## Available Scripts
+You can connect to this SPA  brastlewark-role-info through this link. --> http://brastlewark-role-info.herokuapp.com/
 
-In the project directory, you can run:
+## Description
+
+Project developed in react to facilitate trade between the inhabitants of Brastlewark.
+
+From the beginning and in order to facilitate the handling of the app, we can know the name, age, height and photograph of each inhabitant.
+
+We can know the information of each inhabitant by clicking on the card of each inhabitant, displaying the most detailed information.
+We can thus obtain from your height, hair color, professions and friends that will take you to the detailed information of these.
+
+### Backlog
+
+Filter characters through their jobs and locate other inhabitants in this way.
+
+Improve CSS with animations.
+
+Install the dark theme so that the view can rest
+
+Make the photo load faster.
 
 ### `npm start`
 

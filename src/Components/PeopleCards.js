@@ -77,7 +77,7 @@ export default function PeopleCards(props) {
     if (word === '') {
       setBrastlewark(Brastlewark);
     }
-  });
+  }, [word]);
 
   useEffect(() => {
     searchingByName();
