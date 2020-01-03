@@ -1,6 +1,6 @@
 # Assessment AXA
 
-You can connect to this SPA  brastlewark-role-info through this link. --> http://brastlewark-role-info.herokuapp.com/
+You may connect to this SPA  brastlewark-role-info through this link. --> http://brastlewark-role-info.herokuapp.com/
 
 ## Description
 
