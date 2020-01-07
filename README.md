@@ -10,6 +10,7 @@ From the beginning and in order to facilitate the handling of the app, we can kn
 
 We can know the information of each inhabitant by clicking on the card of each inhabitant, displaying the most detailed information.
 We can thus obtain from your height, hair color, professions and friends that will take you to the detailed information of these.
+We can back to general list doing click on the Brastlewark Logo
 
 ### Backlog
 

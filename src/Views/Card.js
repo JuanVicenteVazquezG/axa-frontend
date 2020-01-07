@@ -143,7 +143,7 @@ export default function Card({ Brastlewark }) {
     <ContainerCardDetail>
       <MoveRight><CharacterDetail>DETAIL INFO</CharacterDetail></MoveRight>
       <Separation />
-      <Link to="/">{'<<Back'}</Link>
+      {/* <Link to="/">{'<<Back'}</Link> */}
       {Person && (
         <CardDetail>
           <CharacterName>{Person.name}</CharacterName>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Reset } from 'styled-reset';
 import { Normalize } from 'styled-normalize';
 import styled, { keyframes } from 'styled-components';
@@ -14,6 +14,11 @@ const Container = styled.div`
    width:95%;
    margin:0 auto;
  `;
+
+const LinkItem = styled(Link)`
+  color: black;
+  text-decoration: none;
+`;
 
 const moveInLeft = keyframes`
 0% {
@@ -67,7 +72,7 @@ function App() {
         <Router>
           <AppDiv>
             <Container>
-              <MoveLeft><H1Title>Brastlewark</H1Title></MoveLeft>
+              <MoveLeft><H1Title><LinkItem to="/">Brastlewark</LinkItem></H1Title></MoveLeft>
               <Route exact path="/person/:id" render={() => <Card Brastlewark={Brastlewark} />} />
               <Route exact path="/" render={() => <Home Brastlewark={Brastlewark} />} />
               <Route exact path="/person" render={() => <Home Brastlewark={Brastlewark} />} />
