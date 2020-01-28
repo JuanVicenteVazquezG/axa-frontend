@@ -65,12 +65,28 @@ export default function PeopleCards(props) {
   } = props;
 
   const { word } = props;
-  const [showBrastlewark, setBrastlewark] = useState([]);
+
+  const numberItemsByPage = 8;
+  const currentPage = 0;
+
+
+  const [showBrastlewark, setBrastlewark] = useState(Brastlewark);
+  const [showBrastlewarkByPage, setBrastlewarkByPage] = useState([]);
+
+  const copyArrayPortion = (origin, end) => {
+    const arrayCopy = [];
+    for (let i = origin; i < end; i=i+1) {
+      arrayCopy.push(JSON.parse(JSON.stringify(showBrastlewark[i])));
+    }
+    return [arrayCopy];
+  };
 
   const searchingByName = () => {
     setBrastlewark(Brastlewark.filter((person) => (person.name.toLowerCase().indexOf(
       word.toLowerCase(),
     ) !== -1)));
+    setBrastlewarkByPage(copyArrayPortion(0, 1));
+    console.log(Math.ceil(showBrastlewark.length / numberItemsByPage));
   };
 
   useEffect(() => {
@@ -102,6 +118,8 @@ export default function PeopleCards(props) {
                 {`Height: ${parseFloat(Math.round(person.height * 100) / 100).toFixed(2)}"`}
               </TextInfo>
             </LinkItem>
+
+
           </CharacterCard>
         ))}
     </CardShower>
