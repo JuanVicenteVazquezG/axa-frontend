@@ -71,6 +71,7 @@ export default function PeopleCards(props) {
   const [showBrastlewark, setBrastlewark] = useState(Brastlewark);
   const [showBrastlewarkByPage, setBrastlewarkByPage] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [limit, setLimit] = useState(Math.ceil(Brastlewark.length / numberItemsByPage));
 
   const copyArrayPortion = (origin, end) => {
     const arrayCopy = [];
@@ -84,6 +85,7 @@ export default function PeopleCards(props) {
     setBrastlewark(Brastlewark.filter((person) => (person.name.toLowerCase().indexOf(
       word.toLowerCase(),
     ) !== -1)));
+    setLimit(Math.ceil(setBrastlewark / numberItemsByPage));
   };
 
   useEffect(() => {
@@ -98,13 +100,12 @@ export default function PeopleCards(props) {
 
   useEffect(() => {
     setBrastlewarkByPage(copyArrayPortion(currentPage * numberItemsByPage, (currentPage * numberItemsByPage) + numberItemsByPage));
-  }, [showBrastlewark, currentPage]);
+  }, [showBrastlewark]);
 
-  useEffect(() => { setCurrentPage(0); }, [showBrastlewark]);
 
   return (
     <CardShower>
-      {currentPage > 0 && <button type="button" onClick={() => { setCurrentPage(currentPage - 1); console.log(currentPage); }}>left</button>}
+      {(currentPage > 0) && <button type="button" onClick={() => { setCurrentPage(currentPage - 1); }}>left</button>}
       {showBrastlewarkByPage
         && showBrastlewarkByPage.map((person) => (
           <CharacterCard
@@ -126,7 +127,8 @@ export default function PeopleCards(props) {
 
           </CharacterCard>
         ))}
-      <button type="button" onClick={() => { setCurrentPage(currentPage + 1); console.log(currentPage); }}>right</button>
+      {console.log(limit, 'y ', currentPage)}
+      {currentPage < limit && <button type="button" onClick={() => { setCurrentPage(currentPage + 1); }}>right</button>}
     </CardShower>
   );
 }
